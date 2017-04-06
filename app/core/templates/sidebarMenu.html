@@ -1,0 +1,27 @@
+<!-- sidebar menu: : style can be found in sidebar.less -->
+<ul class="sidebar-menu">
+    <li class="header">MENÚ PRINCIPAL</li>
+    <li ng-repeat="menu in mainMenu"
+        ng-if="menu.isAllowed"
+        ng-click="onClickSubMenu(mainMenu, menu)"
+        ng-class="{active: menu.isActive}"
+        class="{{menu.liClass}}">
+        <a ng-href="{{menu.aLink}}">
+            <i class="{{menu.aIcon}}"></i> 
+            <span>{{menu.aText}}</span> 
+            <i ng-if="menu.subMenu.length > 0 "
+               class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul ng-if="menu.subMenu.length > 0"
+            class="treeview-menu">
+            <li ng-repeat="item in menu.subMenu" 
+                ng-if="item.isAllowed"
+                ng-class="{active: item.isActive}"
+                ng-click="onClickSubMenu(menu.subMenu, item)">
+                <a ng-href="{{item.aLink}}">
+                    <i class="{{item.aIcon}}"></i> {{item.aText}}
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

@@ -1,0 +1,131 @@
+<div class="content row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border"
+                 ng-switch="!!$ctrl.content.ID">
+                <h3 class="box-title"
+                    ng-switch-when="false">Creación de Contenidos</h3>
+                <h3 class="box-title"
+                    ng-switch-when="true">Edición de Contenidos</h3>
+            </div>
+            <form class="form-horizontal" name="form" validate>
+                <div class="box-body">
+                    <div class="form-group" ng-if="false"
+                         ng-show="!!$ctrl.content.ID">
+                        <label for="descripcion"
+                               class="col-sm-2 control-label">
+                            Código
+                        </label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static">{{ $ctrl.content.ID | leftPad }}</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion"
+                               class="col-sm-2 control-label"
+                               required-field>Nombre: </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="descripcion" placeholder="Nombre"
+                                   required
+                                   maxlength="500"
+                                  
+                                   ng-model="$ctrl.content.NAME"
+                                   data-auto-focus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="descripcion"
+                               class="col-sm-2 control-label"
+                               required-field>Reporte: </label>
+                        <div class="col-sm-2">
+                            <select name="reporte"  class="form-control"
+                                    id="reporte" 
+                                    ng-model="$ctrl.content.REPORT_ID" required
+                                    ng-change="$ctrl.reportChange()"
+                                    ng-options="report.ID as report.NAME for report in $ctrl.reports">
+                            </select>
+                        </div>
+
+                        <label ng-show="$ctrl.subreports.length > 0" for="descripcion" class="col-sm-2 control-label">Sub Reporte: </label>
+                        <div class="col-sm-2"  ng-if="$ctrl.subreports.length > 0">
+                            <select class="form-control" 
+                                    required 
+                                    name="subreport" 
+                                    id="subreport" 
+                                    ng-model="$ctrl.content.SUBREPORT_ID"
+                                    ng-options="subreport.ID as subreport.NAME for subreport in $ctrl.subreports" >
+                                
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion"
+                               class="col-sm-2 control-label"
+                               required-field>Procedure: </label>
+                        
+                        <div class="col-sm-6"> 
+                            <input type="text" class="form-control" id="procedure" placeholder="Ingrese el store procedure"
+                                   required
+                                   maxlength="500"
+                                   ng-disabled="$ctrl.content.graphs.length > 0"
+                                   ng-model="$ctrl.content.PROCEDURE"
+                                   data-auto-focus>
+                            * Para Editar el procedure no debe tener graficos agregados <button ng-show="$ctrl.content.graphs.length > 0" ng-click="$ctrl.content.graphs = []" class="btn btn-xs btn-danger">Borrar gráficos</button>
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-2">
+                            <br>
+                            <p>
+                                * El procedure sera ejecutado con las variables <br> <b> @AnioSeleccionado, @SemanaSeleccionada, @Antiguedad</b>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion"
+                               class="col-sm-2 control-label"
+                               required-field>Antiguedad: </label>
+                        
+                        <div class="col-sm-6"> 
+                            <input type="number" class="form-control" id="rango-semana" placeholder="Numero de semanas"
+                                   required
+                                   maxlength="500"
+                                   ng-model="$ctrl.content.WEEKSRANGE"
+                                   data-auto-focus>
+                        </div> 
+                    </div>
+                    
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"for="descripcion" required-field>Tipo Grafico: </label>
+                    <div class="graphic-group col-sm-2">
+                        <select name="" id="" ng-model="$ctrl.content.CONTENT_TYPE" class="form-control">
+                            <option value="grafico">Grafico</option>
+                            <option value="tabla">Tabla</option>
+                            
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-if="$ctrl.content.CONTENT_TYPE == 'grafico'">
+                    <label class="col-sm-2 control-label"for="descripcion" required-field>Gráficos: </label>
+                    <div class="graphic-group col-sm-8">
+                        <graphic-field-component ng-repeat="graphic in $ctrl.content.graphs" 
+                                                 graphic="graphic"
+                                                 on-remove-graphic="$ctrl.removeGraph($index)"  ></graphic-field-component>
+                    </div>
+
+                    <div class="col-sm-3 col-sm-offset-2">
+                        <a class="btn btn-block btn-success btn-sm"  ng-click="$ctrl.addGraph()">Agregar Grafico</a>
+                    </div>
+                </div>
+                
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right" ng-click="$ctrl.save(form)">Guardar</button>
+                    <button type="submit" class="btn btn-default" ng-click="$ctrl.backToList()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

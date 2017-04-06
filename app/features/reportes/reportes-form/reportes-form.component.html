@@ -1,0 +1,81 @@
+<div class="content row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-header with-border"
+                 ng-switch="!!$ctrl.reporte.ID">
+                <h3 class="box-title"
+                    ng-switch-when="false">Creación de Reportes</h3>
+                <h3 class="box-title"
+                    ng-switch-when="true">Edición de Reportes</h3>
+            </div>
+            <form class="form-horizontal" name="form" validate>
+                <div class="box-body">
+                   
+                    <div class="form-group">
+                        <label for="descripcion"
+                               class="col-sm-2 control-label"
+                               required-field>Nombre: </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="descripcion" placeholder="Nombre"
+                                   required
+                                   maxlength="500"
+                                   ng-model="$ctrl.reporte.NAME"
+                                   data-auto-focus>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion"
+                               class="col-sm-2 control-label">Sub Reportes: </label>
+                        <div class="col-sm-10">
+                            <div class="row ">
+                                <div class="col-sm-12 subreports-item" ng-repeat="item in $ctrl.reporte.sub track by $index">
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" required ng-model="item.NAME" placeholder="SUB reporte ...">
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <a  ng-click="$ctrl.showRemoveConfirmDialog($index, item)"> <i class="fa fa-trash"></i></a>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="col-sm-3">
+                                 <a class="btn btn-block btn-success btn-sm"  ng-click="$ctrl.addSubReport()">Agregar Sub Reporte</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-info pull-right" ng-click="$ctrl.save(form)">Guardar</button>
+                    <button type="submit" class="btn btn-default" ng-click="$ctrl.backToList()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade"
+     id="confirm-dialog"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirmar</h4>
+            </div>
+            <div class="modal-body">
+                Seguro que desea eliminar el sub reporte: {{ $ctrl.temporaldata.name }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                <button type="button"
+                        class="btn btn-danger"
+                        ng-click="$ctrl.removeSubReport($ctrl.temporaldata.index)"
+                        data-dismiss="modal">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

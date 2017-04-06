@@ -1,0 +1,21 @@
+<div class="col-sm-12">
+    <!--<highchart ng-if="!$ctrl.isLoading" id="{{$ctrl.charId}}" config="$ctrl.chartConfig"></highchart>-->
+    <hc-chart options="$ctrl.chartConfig" id="{{$ctrl.charId}}" ng-if="!$ctrl.isLoading"></hc-chart>
+</div>
+<!-- <div class="col-sm-4 comment-small-block" ng-if="!$ctrl.hideComments">
+    <comment-block-component key="$ctrl.currentPoint"
+                             title="{{$ctrl.pointTitle}}"></comment-component>
+</div> -->
+<div class="col-sm-12 graphic-table-wrapper" ng-bind-html="$ctrl.graphictable"></div>
+
+<div class="col-sm-12 comment-long-block" ng-if="!$ctrl.hideComments">
+    <comment-block-component key="$ctrl.graphic.id" title="Comentarios generales"></comment-component>
+</div>
+
+<div class="col-sm-12">
+    <image-list-component ng-if="$ctrl.semanaImageList" key="$ctrl.semanaImageList"></image-list-component>
+</div>
+
+<comment-popup-component ng-if="$ctrl.showCommentPopup"
+                         key="$ctrl.currentPoint" 
+                         title="{{$ctrl.pointTitle}}"></comment-popup-component>

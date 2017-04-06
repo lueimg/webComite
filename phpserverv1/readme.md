@@ -1,0 +1,39 @@
+* configurar apache con override all virtual host
+
+# reports
+#######
+-- insert into KPI_REPORTS values( kpi_reports_seq.nextval, 'test')
+CREATE SEQUENCE kpi_reports_seq START WITH 1;
+CREATE SEQUENCE kpi_queries_seq START WITH 1;
+CREATE SEQUENCE kpi_subreports_seq START WITH 1;
+CREATE SEQUENCE kpi_content_seq START WITH 1;
+CREATE SEQUENCE kpi_series_seq START WITH 1;
+CREATE SEQUENCE kpi_content_fields_seq START WITH 1;
+CREATE SEQUENCE kpi_comments_seq START WITH 1;
+CREATE SEQUENCE kpi_yaxis_seq START WITH 1;
+CREATE SEQUENCE kpi_graphics_seq START WITH 1;
+CREATE SEQUENCE kpi_files_seq START WITH 1;
+#####
+
+
+
+create or replace procedure sp_test(p_semana number,p_anio number, p_antiguedad number)
+is
+begin
+ execute immediate 'truncate table KPI_TMP_REP_GRAFICO';
+INSERT INTO KPI_TMP_REP_GRAFICO (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(1, '43-2016', 'a', 1, null);
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(2, '44-2016', 'a', 3, null);
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(3, '45-2016', 'a', 8, null);
+
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(4, '43-2016', 'b', 10, null);
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(1, '44-2016', 'b', 7, null);
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(2, '45-2016', 'b', 6, null);
+
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(1, '43-2016', 'c', 10, null);
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(2, '44-2016', 'c', 3, null);
+INSERT INTO KPI_TMP_REP_GRAFICO  (ORDEN, REFFECHA, ELEMENTO, VALOR1, VALOR2) VALUES(3, '45-2016', 'c', 18, null);
+
+
+       commit;
+ 
+end;

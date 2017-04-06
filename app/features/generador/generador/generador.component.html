@@ -1,0 +1,82 @@
+
+<section class="content-header">
+  <h1>  Generador de Reportes  </h1>
+</section>
+<section class="content">
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Reportes</h3>
+        </div>
+        <div class="box box-solid">
+          <report-menu-component on-click="$ctrl.selectContent(content)"> </report-menu-component>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title pull-left">Semanas</h3>
+
+          <div class="col-sm-6 pull-left">
+            <div class="col-sm-12">
+                <select class="form-control" 
+                        ng-change="$ctrl.semanaListChange()"
+                        ng-model="$ctrl.semanaSelected" 
+                        ng-options="item.SEMANA for item in $ctrl.semanas">
+                </select>
+            </div>
+          </div>
+          
+          <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body no-padding">
+          
+          <div class="col-sm-10">
+            <div class="selected-filters">
+              <b>Filtros seleccionados: </b>
+              
+              <span class="selected-option ">Contenido: {{$ctrl.filtros.content_name}}</span>
+            </div>
+          </div>
+          
+          <hr>
+
+          <div class="col-sm-12" ng-if="$ctrl.filtros.content_name == ''">
+           <div class="alert alert-info alert-dismissible">
+                * Seleccione un contenido para mostrar graficos por semana y año.
+            </div>
+          </div>
+          <div class="col-sm-12"  ng-show="$ctrl.isLoading">
+            <div class="alert alert-info alert-dismissible">
+                * Generando graficos ... 
+            </div>
+          </div>
+
+           <div class="col-sm-12"  ng-show="$ctrl.graphics.length < 1 && $ctrl.filtros.content_id && !$ctrl.isLoading && $ctrl.type != 'tabla'">
+            <div class="alert alert-warning alert-dismissible">
+                * No se encontraron gráficos que mostrar
+            </div>
+          </div>
+
+          <div ng-if="!$ctrl.isLoading" ng-repeat="graphic in $ctrl.graphics">
+              <graphic-component graphic="graphic" data="$ctrl.data" graphictable="$ctrl.graphicTable" filtros="$ctrl.filtros"></graphic-component>
+          </div>
+
+          <div ng-if="!$ctrl.isLoading && $ctrl.graphics.length == 0 && $ctrl.graphicTable.length > 0">
+              <graphic-component graphictable="$ctrl.graphicTable" filtros="$ctrl.filtros"></graphic-component>
+          </div>
+
+          
+
+        </div>
+        <!-- /.box-body -->
+      
+      </div>
+      <!-- /. box -->
+    </div>
+  </div>
+</section>

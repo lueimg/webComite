@@ -1,0 +1,67 @@
+<div class="form-group">
+    <div class="row">
+        <label for="descripcion" class="col-sm-2 control-label" required-field>Título: </label>
+        <div class="col-sm-8"> 
+            <input type="text" class="form-control" id="titulo" placeholder="titulo del grafico"
+                required
+                maxlength="500"
+                ng-model="$ctrl.graphic.title"
+                data-auto-focus>
+        </div> 
+        <div class="col-sm-2 pull-right"> 
+            <a  ng-click="$ctrl.removeGraph()"> <i class="fa fa-trash"></i> Borrar Grafico</a>
+        </div>
+     </div>
+</div>
+<div class="row">
+    <div class="col-sm-1">
+        <h5 class="box-title">KPIs: </h5>
+    </div>
+    <div class="col-sm-8">
+       * Se encontraron ({{$ctrl.graphic.kpis.length}}) KPIs en el  StoreProcedure
+    </div>
+</div> 
+
+<table class="table table-striped">
+    <tbody>
+        <tr>
+            <th style="width: 10px">#</th>
+            <th>KPI</th>  
+            <th>GRAFICO</th> 
+            <th>Etiqueta Y Axis</th> 
+            <th>Unidad de Medida</th>  
+            <th>Y Max</th>
+            <th>Y Min</th> 
+            <th>Axisa Opuesta</th>
+        </tr>
+        <tr ng-repeat="kpi in $ctrl.graphic.kpis">
+            <td>#</td>
+            <td>{{kpi.NAME_FROM_PROCEDURE}}</td>
+            <td>
+                <select class="form-control" name="kpi-tipo" ng-model="kpi.GRAPHIC_TYPE">
+                    <option value="line">Linea</option>
+                    <option value="pie">Pie</option>
+                    <option value="spline">Spline</option>
+                    <option value="column">Columna</option>
+                    <option value="bar">Bar</option>
+                    <option value="area">Area</option>
+                </select>
+            </td>
+            <td>
+                <input class="form-control" type="text" ng-model="kpi.TITLE" required>
+            </td>
+            <td>
+                <input class="form-control" type="text" ng-model="kpi.SUFFIX" required>
+            </td>
+            <td>
+                <input class="form-control" type="text" ng-model="kpi.YMAX" placeholder="Automatico">
+            </td>
+            <td>
+                <input class="form-control" type="text" ng-model="kpi.YMIN" placeholder="Automatico">
+            </td>
+            <td>
+                <input type="checkbox" ng-model="kpi.OPPOSITE" ng-true-value="'1'" ng-false-value="'0'"> 
+            </td>
+        </tr>
+    </tbody>
+</table>

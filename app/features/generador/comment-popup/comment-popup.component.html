@@ -1,0 +1,66 @@
+<div class="modal fade"
+     id="comment-popup-form"
+     tabindex="-2"
+     role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{$ctrl.title}}</h4>
+                
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                 <form>
+                    <input type="text" class="form-control" placeholder="Usuario" ng-model="$ctrl.comment.user" required>
+                     <textarea class="form-control" rows="3" placeholder="Comentario ..." ng-model="$ctrl.comment.comment" required></textarea>
+                 </form>
+                </div>
+                <div class="form-group pull-right">
+                    <button type="button" 
+                            class="btn btn-danger pull-left" 
+                            ng-click="$ctrl.deleteComment()" 
+                            ng-if="$ctrl.comment.id">Borrar</button>
+                    <button type="button"
+                            class="btn btn-info"
+                            ng-click="$ctrl.saveComment()">
+                        Guardar
+                    </button>
+                </div>
+
+                <div class="col-sm-12">
+                    <image-list-component key="$ctrl.key"></image-list-component>
+                </div>
+
+                <div class="col-sm-12 comment-group " ng-if="$ctrl.key">
+                    <div ng-if="$ctrl.list.length < 1">
+                        * Aun no hay comentarios registrados.
+                    </div>
+                    <div ng-repeat="comment in $ctrl.list" class="comment-item">
+                        <a type="button" 
+                            ng-if="!$ctrl.isViewMode"
+                            class="btn comment-edit"
+                            title="Editar"
+                            ng-click="$ctrl.editComment(comment)">
+                                <i class="fa fa-edit"></i> 
+                        </a>
+
+                        <div class="comment-post">
+                            <div class="user-block" ng-if="!$ctrl.isViewMode">
+                                
+                                <span class="username"> <a>{{comment.USUARIO}}</a> </span>
+                                <span class="date ">{{comment.CREATED_AT}}</span> 
+                            </div>
+                            <div class="comment-body">
+                            {{comment.COMENTARIO}}
+                            </div clas>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

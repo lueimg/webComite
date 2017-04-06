@@ -1,0 +1,64 @@
+<br>    
+<hr>
+<div class="upload-image">
+    <label for=""><b>Imagenes de la {{$ctrl.title}} : </b> </label>
+    <button type="file" ngf-select="$ctrl.uploadFiles($file, $invalidFiles)"
+        accept="image/*">
+     Subir imagen </button>
+</div>
+<div class="image-list-wrap">
+    
+    <div class="image-item" ng-repeat="item in $ctrl.imageList">
+        <img ng-src="{{item.url}}" 
+             width="100px" 
+             ng-click="$ctrl.openLightboxModal($index)"/>
+        
+        <a ng-click="$ctrl.showEditFileDialog(item)">
+            <span class="image-name">{{item.NAME}}</span>
+            <i class="fa fa-fw fa-remove"></i>
+        </a>
+    </div>
+
+</div>
+<br>    
+<hr>
+<br>
+
+
+
+<div class="modal fade"
+     id="confirm-dialog"
+     tabindex="-1"
+     role="dialog"
+     style="z-index: 1080 !important"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edicion: </h4>
+            </div>
+            <div class="modal-body">
+               Nombre : <input type="text" name="imageName" class="form-control" ng-model="$ctrl.temporaldata.NAME">
+            </div>
+            <div class="modal-footer">
+                <button type="button" 
+                        class="btn btn-default" 
+                        ng-click="$ctrl.getImagesList()"
+                        data-dismiss="modal">Cancelar</button>
+                <button type="button"
+                        class="btn btn-danger"
+                        ng-click="$ctrl.removeFile($ctrl.temporaldata)"
+                        data-dismiss="modal">
+                    Eliminar
+                </button>
+                <button type="button"
+                        class="btn btn-primary"
+                        ng-click="$ctrl.updateFile($ctrl.temporaldata)"
+                        data-dismiss="modal">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

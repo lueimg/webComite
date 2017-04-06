@@ -1,0 +1,334 @@
+select, input , textarea,
+.ui-select-choices li ,
+ad-table-ajax tbody, .form-control-static{
+    // text-transform: uppercase;
+}
+
+// Required marker color
+$required-marker-color: #b94a48;
+
+.ui-select-element {
+    .btn-default{
+        background: #FFF;
+    }
+}
+
+.message {
+    position: fixed;
+    width: 40%;
+    right: 0;
+    top: 50px;
+    margin: 5px;
+    z-index: 9999;
+}
+
+.required-field-marker {
+    color: $required-marker-color;
+    margin-left: 3px;
+}
+
+.container-zones-list {
+    a.btn {
+        padding: 0;
+    }
+    span {
+      display: inline-block;
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    display: block;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.user-panel {
+  min-height: 50px;
+  .info {
+    left: initial;
+    padding-left: 0;
+  }
+}
+
+.btn-header, .btn-left {
+  .btn {
+    padding: 0;
+  }
+}
+
+/* ---- Bootstrap fix ----*/
+.ui-select-match-text{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 40px;
+}
+.ui-select-toggle > .btn.btn-link {
+  margin-right: 10px;
+  top: 6px;
+  position: absolute;
+  right: 10px;
+}
+
+/* Records Grid */
+
+.grid {
+  width: 100%;
+  height: 250px;
+}
+
+.grid-msg-overlay {
+  position: absolute;
+  top: 90px;
+  margin-left: 10px;
+}
+
+.grid-msg-overlay span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.record-header h3 {
+  margin-top: 0;
+}
+
+.record-form {
+  textarea {
+    max-width: 200%
+  }
+  .box-group .box {
+    padding: 5px 0;
+  }
+}
+
+@font-face {
+  font-family: codeBarFont;
+  src: url(/core/3OF9_NEW.TTF);
+}
+
+.codeBarColumn {
+  font-family: codeBarFont;
+  font-size: 30px;
+  margin: 10px 0;
+
+  transform:scale(1,2); /* W3C */
+  -webkit-transform:scale(1,2); /* Safari and Chrome */
+  -moz-transform:scale(1,2); /* Firefox */
+  -ms-transform:scale(1,2); /* IE 9 */
+  -o-transform:scale(1,2); /* Opera */
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+  background-color: #0154a0;
+}
+@media (max-width: 767px) {
+ 
+  .skin-blue .main-header .navbar .dropdown-menu li a:hover {
+    background: #0154a0;
+  }
+}
+
+.skin-blue .main-header .logo {
+  background-color: #0154a0;
+
+}
+
+.skin-blue-light .main-header .navbar .sidebar-toggle:hover {
+  background-color: #0154a0;
+}
+
+@media (max-width: 767px) {
+  .skin-blue-light .main-header .navbar .dropdown-menu li a:hover {
+    background: #0154a0;
+  }
+}
+
+.skin-blue .main-header .navbar {
+    background-color: #0154a0;
+}
+
+.graphic-group {
+  graphic-field-component {
+     background: #fbfbfb;
+    border: 1px solid #ccc;
+    padding: 15px;
+    display: block;
+  }
+ 
+}
+
+.content-click {
+  cursor: pointer;
+  &:hover {
+    background: #ccc;
+  }
+}
+.comment-group {
+   max-height: 300px;
+    overflow: scroll;
+    min-height: 150px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+
+.comment-item {
+  .username, .date {
+    margin-left: 0;
+  }
+}
+.selected-filters {
+  padding: 10px 0;
+      margin-bottom: 30px;
+  .selected-option {  
+    border: 1px solid #f9f9f9;
+    background: #eaeaea;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 3px;
+    display: inline-block;
+    box-shadow: 1px 1px 1px #ccc;
+    font-weight: bold;
+    min-width: 50px;
+    text-align: center;
+  }
+}
+.subreports-item {
+      margin: 5px 0;
+}
+
+.comment-edit {
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+    position: relative;
+    top: 5px;
+    left: 13px;
+}
+.comment-post {
+  display: inline-block;
+  margin: 5px 5px 5px 20px;
+  .user-block {
+    display: inline-block;
+    
+    span {
+      display: inline-block;
+    }
+    .date {
+      color: #ccc;
+      font-size: 12px;
+    }
+    .username {
+        min-width: 72px;
+    }
+  }
+  .comment-body {
+   display: list-item;
+    margin: 5px 5px 5px 15px;
+
+  }
+}
+.comment-long-block {
+  
+}
+.comment-item {
+      border: 1px solid #ccc;
+      box-shadow: 1px 1px 1px #CCc;
+      margin: 5px;
+      background: #fdfdfd;
+      &:hover {
+            background: #e8e8e8;
+      }
+  }
+
+.graphic-table-wrapper {
+  table {
+    width: 100%;
+  }
+}
+
+#comment-popup-form {
+ // z-index: 1040;
+  .modal-content {
+    height: 800px;
+  }
+}
+
+.image-item {
+    display: inline-block;
+    margin: 15px;
+    
+      img {
+        border: 2px solid #fff;
+      }
+     a {
+      cursor: pointer;
+      display: block;
+    text-align: center;
+
+    &:hover {
+      color: darkred;
+    }
+
+     }
+}
+
+.image-item:hover {
+    img {
+      border: 2px solid #ccc;
+    }
+}
+
+
+.lightbox-modal {
+   z-index: 1060 !important;
+}
+.lightbox-modal-backdrop {
+  z-index: 1059 !important;
+}
+
+
+.lightbox-nav {
+  position: relative;
+  margin-bottom: 12px; /* the font-size of .btn-xs */
+  height: 22px;
+  text-align: center;
+  font-size: 0; /* prevent the otherwise inherited font-size and line-height from adding extra space to the bottom of this div */
+}
+
+.lightbox-nav .btn-group {
+  vertical-align: top;
+}
+
+.lightbox-nav .close {
+  /* absolutely position this in order to center the nav buttons */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.lightbox-image-container {
+  position: relative;
+  text-align: center; /* center the image */
+}
+
+/* the caption overlays the top left corner of the image */
+.lightbox-image-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0.5em 0.9em; /* the left and right margins are offset by 0.4em for the span box-shadow */
+  color: #000;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: left;
+  text-shadow: 0.1em 0.1em 0.2em rgba(255, 255, 255, 0.5);
+}
+
+.lightbox-image-caption span {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+  background-color: rgba(255, 255, 255, 0.75);
+  /* pad the left and right of each line of text */
+  box-shadow: 0.4em 0 0 rgba(255, 255, 255, 0.75),
+    -0.4em 0 0 rgba(255, 255, 255, 0.75);
+}
